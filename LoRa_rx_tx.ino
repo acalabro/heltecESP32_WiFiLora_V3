@@ -16,6 +16,8 @@
   uint64_t minimum_pause;
   const unsigned int MAX_MESSAGE_LENGTH = 12;
   static char message[MAX_MESSAGE_LENGTH];
+  static char deviceIdentifier[5] = "002%";
+  static char finalMess[MAX_MESSAGE_LENGTH+5];
   
   void setup() {
     heltec_setup();
@@ -70,7 +72,11 @@
         radio.clearDio1Action();
         heltec_led(50); // 50% brightness is plenty for this LED
         tx_time = millis();
-        RADIOLIB(radio.transmit(message));
+
+        strcpy(finalMess, deviceIdentifier);
+        strcat(finalMess, message);
+
+        RADIOLIB(radio.transmit(finalMess));
         tx_time = millis() - tx_time;
         heltec_led(0);
         if (_radiolib_status == RADIOLIB_ERR_NONE) {
@@ -83,6 +89,7 @@
         radio.setDio1Action(rx);
         RADIOLIB_OR_HALT(radio.startReceive(RADIOLIB_SX126X_RX_TIMEOUT_INF));
         memset(message, 0, sizeof(message));
+        memset(finalMess, 0, sizeof(finalMess));
       }
   }
 
