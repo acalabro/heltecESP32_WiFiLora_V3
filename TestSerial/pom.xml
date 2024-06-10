@@ -16,6 +16,11 @@
 	    <artifactId>jSerialComm</artifactId>
 	    <version>2.11.0</version>
 	</dependency>
+	<dependency>
+	    <groupId>com.google.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.4</version>
+	</dependency>
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -63,4 +68,11 @@
     	</plugins>
     </pluginManagement>
   </build>
+  <repositories>
+    <repository>
+        <id>VMWare One Repository</id>
+        <name>VMWare One Repository</name>
+        <url>https://vmwaresaas.jfrog.io/artifactory/Workspace-ONE-Android-SDK/</url>
+    </repository>
+</repositories>
 </project>

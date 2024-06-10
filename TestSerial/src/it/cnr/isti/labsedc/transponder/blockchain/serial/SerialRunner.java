@@ -1,10 +1,10 @@
-package it.cnr.isti.labsedc.transponder.blockchain;
+package it.cnr.isti.labsedc.transponder.blockchain.serial;
 
 import com.fazecast.jSerialComm.SerialPort;
 
 public class SerialRunner {
 
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		SerialPort[] commPorts;
 		commPorts = SerialPort.getCommPorts();
 		
